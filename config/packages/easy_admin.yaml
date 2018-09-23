@@ -1,0 +1,146 @@
+easy_admin:
+    entities:
+        Game:
+            class: App\Entity\Game
+            list:
+                fields:
+                    - { property: 'id', type: 'integer' }
+                    - { property: 'image', type: 'image', base_path: '%app.path.game_images%' }
+                    - { property: 'name', type: 'string' }
+                    - { property: 'synopsis', type: 'text' }
+                    - { property: 'rules', type: 'text' }
+                    - { property: 'releaseDate', type: 'datetime' }
+                    - { property: 'playerNumber', type: 'integer' }
+                    - { property: 'slug', type: 'string' }
+            show:
+                fields:
+                    - { property: 'id', type: 'integer' }
+                    - { property: 'image', type: 'image', base_path: '%app.path.game_images%' }
+                    - { property: 'name', type: 'string' }
+                    - { property: 'synopsis', type: 'text' }
+                    - { property: 'rules', type: 'text' }
+                    - { property: 'releaseDate', type: 'datetime' }
+                    - { property: 'playerNumber', type: 'integer' }
+                    - { property: 'slug', type: 'string' }
+            form:
+                fields:
+                    - { property: 'imageFile', type: 'file' }
+                    - { property: 'name' }
+                    - { property: 'synopsis' }
+                    - { property: 'rules' }
+                    - { property: 'releaseDate' }
+                    - { property: 'playerNumber' }
+                    - { property: 'slug' }
+
+        Match:
+            class: App\Entity\Match
+            list:
+                fields:
+                    - { property: 'id', type: 'integer' }
+                    - { property: 'teamA' }
+                    - { property: 'teamB' }
+                    - { property: 'game'}
+                    - { property: 'date', type: 'datetime' }
+                    - { property: 'score', type: 'string' }
+                    - { property: 'created', type: 'datetime' }
+                    - { property: 'updated', type: 'datetime' }
+            show:
+                fields:
+                    - { property: 'id', type: 'integer' }
+                    - { property: 'teamA' }
+                    - { property: 'teamB' }
+                    - { property: 'game'}
+                    - { property: 'date', type: 'datetime' }
+                    - { property: 'score', type: 'string' }
+                    - { property: 'created', type: 'datetime' }
+                    - { property: 'updated', type: 'datetime' }
+            form:
+                fields:
+                    - { property: 'teamA' }
+                    - { property: 'teamB' }
+                    - { property: 'game'}
+                    - { property: 'date' }
+                    - { property: 'score' }
+                    - { property: 'created' }
+                    - { property: 'updated' }
+
+        Post:
+            class: App\Entity\Post
+            list:
+                fields:
+                    - { property: 'id', type: 'integer' }
+                    - { property: 'image', type: 'image', base_path: '%app.path.post_images%' }
+                    - { property: 'title', type: 'string' }
+                    - { property: 'body', type: 'string' }
+                    - { property: 'created', type: 'datetime' }
+                    - { property: 'updated', type: 'datetime' }
+            show:
+                fields:
+                     - { property: 'id', type: 'integer' }
+                     - { property: 'image', type: 'image', base_path: '%app.path.post_images%' }
+                     - { property: 'title', type: 'string' }
+                     - { property: 'body', type: 'string' }
+                     - { property: 'created', type: 'datetime' }
+                     - { property: 'updated', type: 'datetime' }
+            form:
+                fields:
+                    - { property: 'imageFile', type: 'file' }
+                    - { property: 'title' }
+                    - { property: 'body' }
+                    - { property: 'created' }
+                    - { property: 'updated' }
+
+        Team:
+            class: App\Entity\Team
+            list:
+                fields:
+                    - { property: 'id', type: 'integer' }
+                    - { property: 'image', type: 'image', base_path: '%app.path.team_images%' }
+                    - { property: 'name', type: 'string' }
+                    - { property: 'division', type: 'string' }
+                    - { property: 'country', type: 'string' }
+                    - { property: 'game' }
+            show:
+                fields:
+                     - { property: 'id', type: 'integer' }
+                     - { property: 'image', type: 'image', base_path: '%app.path.team_images%' }
+                     - { property: 'name', type: 'string' }
+                     - { property: 'division', type: 'string' }
+                     - { property: 'country', type: 'string' }
+                     - { property: 'game' }
+            form:
+                fields:
+                    - { property: 'imageFile', type: 'file' }
+                    - { property: 'name' }
+                    - { property: 'division' }
+                    - { property: 'country' }
+                    - { property: 'game' }
+
+        User:
+            class: App\Entity\User
+            list:
+                fields:
+                    - { property: 'id', type: 'integer' }
+                    - { property: 'image', type: 'image', base_path: '%app.path.user_images%' }
+                    - { property: 'username', type: 'string' }
+                    - { property: 'email', type: 'string' }
+                    - { property: 'password', type: 'string' }
+                    - { property: 'teams', type: 'array' }
+                    - { property: 'isAdmin', type: 'boolean' }
+            show:
+                fields:
+                    - { property: 'id', type: 'integer' }
+                    - { property: 'image', type: 'image', base_path: '%app.path.user_images%' }
+                    - { property: 'username', type: 'string' }
+                    - { property: 'email', type: 'string' }
+                    - { property: 'password', type: 'string' }
+                    - { property: 'teams', type: 'array'}
+                    - { property: 'isAdmin', type: 'boolean' }
+            form:
+                fields:
+                    - { property: 'imageFile', type: 'file' }
+                    - { property: 'username' }
+                    - { property: 'email' }
+                    - { property: 'password' }
+                    - { property: 'teams' }
+                    - { property: 'isAdmin' }

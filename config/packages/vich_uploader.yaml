@@ -1,0 +1,29 @@
+parameters:
+    app.path.game_images: /uploads/images/game
+    app.path.post_images: /uploads/images/post
+    app.path.team_images: /uploads/images/team
+    app.path.user_images: /uploads/images/user
+
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        game_images:
+            uri_prefix: '%app.path.game_images%'
+            upload_destination: '%kernel.project_dir%/public/uploads/images/game'
+            inject_on_load: true
+
+        post_images:
+            uri_prefix: '%app.path.post_images%'
+            upload_destination: '%kernel.project_dir%/public/uploads/images/post'
+            inject_on_load: true
+
+        team_images:
+            uri_prefix: '%app.path.team_images%'
+            upload_destination: '%kernel.project_dir%/public/uploads/images/team'
+            inject_on_load: true
+
+        user_images:
+            uri_prefix: '%app.path.user_images%'
+            upload_destination: '%kernel.project_dir%/public/uploads/images/user'
+            inject_on_load: true

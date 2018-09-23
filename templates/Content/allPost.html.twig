@@ -1,0 +1,20 @@
+{% extends "base.html.twig" %}
+{% block layout_content %}
+    <div class="card-columns">
+        {% for post in posts %}
+            <a href="blog/{{ post.slug }}">
+                <div class="card mb-3">
+                    <h3 class="card-header">{{ post.title }}</h3>
+                    <img class="card-img-top"
+                         src="{{ vich_uploader_asset(post, 'imageFile') }}" alt="Card image">
+                    <div class="card-body">
+                        <p class="card-text">{{ post.body }}</p>
+                    </div>
+                    <div class="card-footer text-muted">
+                        Crée le {{ post.created|date("d/m/Y") }}
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}

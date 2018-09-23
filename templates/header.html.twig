@@ -1,0 +1,41 @@
+<header>
+    <div id="pre__nav">
+        <form class="navbar-search pull-right">
+            <input type="text" class="search-query" placeholder="Search">
+        </form>
+        {% if app.user %}
+            <button type="button" class="btn btn-danger">
+                <a href="{{ path('logout', {'page' : 'logout'}) }}">Déconnexion</a>
+            </button>
+        {% else %}
+            <button type="button" class="btn btn-success">
+                <a href="{{ path('login', {'page' : 'login'}) }}">Connexion</a></button>
+        {% endif %}
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="{{ path('home', {'page': 'home'}) }}">JolE-sport</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
+                aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('all-games', {'page': 'allGames'}) }}">Games</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('all-teams', {'page': 'allTeams'}) }}">Teams</a>
+                </li>
+                {% if app.user %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('profile', {'page': 'profile'}) }}">Profile</a>
+                    </li>
+                {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('allPost', {'page': 'allPost'}) }}">Blog</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>

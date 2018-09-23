@@ -1,0 +1,16 @@
+{% extends "base.html.twig" %}
+{% block layout_content %}
+    <div class="card-columns">
+        {% for team in teams %}
+            <div class="card border-warning mb-3" style="max-width: 20rem;">
+                <a href="team/{{ team.slug }}">
+                    <div class="card-header">{{ team.name }}</div>
+                    <div class="card-body">
+                        <img style="width: 100%; display: block;"
+                             src="{{ vich_uploader_asset(team, 'imageFile') }}" alt="Card image">
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

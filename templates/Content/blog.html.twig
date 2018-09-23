@@ -1,0 +1,14 @@
+{% extends "base.html.twig" %}
+{% block layout_content %}
+    <div class="card mb-3">
+        <h3 class="card-header">{{ blog.title }}</h3>
+        <img style="height: 200px; width: 100%; display: block;" src="{{ vich_uploader_asset(blog, 'imageFile') }}"
+             alt="Card image">
+        <div class="card-body">
+            <p class="card-text">{{ blog.body }}</p>
+        </div>
+        <div class="card-footer text-muted">
+            Crée le {{ blog.created|date("d/m/Y") }}
+        </div>
+    </div>
+{% endblock %}

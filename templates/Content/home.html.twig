@@ -1,0 +1,47 @@
+{% extends "base.html.twig" %}
+{% block layout_content %}
+    <h1>Derniers matches</h1>
+    <table class="table table-hover">
+        <thead>
+        <tr class="table-danger">
+            <th scope="col"><a href="{{ path('all-games') }}">Jeu</a></th>
+            <th scope="col">Equipe à domicile</th>
+            <th scope="col">Score</th>
+            <th scope="col">Equipe à l'exterieur</th>
+            <th scope="col">Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for matchs in match %}
+            <tr class="table-info">
+                <th scope="row"><a href="game/{{ matchs.game.slug }}">{{ matchs.game }}</a></th>
+                <td><a href="team/{{ matchs.teamA.slug }}">{{ matchs.teamA }}</a></td>
+                <td>{{ matchs.score }}</td>
+                <td><a href="team/{{ matchs.teamB.slug }}">{{ matchs.teamB }}</a></td>
+                <td>{{ matchs.date|date("d/m/Y") }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div>
+        <h2>Actualités</h2>
+    </div>
+    <div class="card-columns">
+        {% for post in posts %}
+                <a href="blog/{{ post.slug }}">
+                    <div class="card mb-3">
+                        <h3 class="card-header">{{ post.title }}</h3>
+                        <img style="width: 100%; display: block;"
+                             src="{{ vich_uploader_asset(post, 'imageFile') }}" alt="Card image">
+                        <div class="card-body">
+                            <p class="card-text">{{ post.body }}</p>
+                        </div>
+                        <div class="card-footer text-muted">
+                            <p class="card-text">Crée le {{ post.created|date("d/m/Y") }}</p>
+                            <p class="card-text">Modifié le {{ post.updated|date("d/m/Y") }}</p>
+                        </div>
+                    </div>
+                </a>
+        {% endfor %}
+    </div>
+{% endblock %}

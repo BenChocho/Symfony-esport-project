@@ -1,0 +1,28 @@
+{% extends "base.html.twig" %}
+{% block layout_content %}
+    <h1>{{ game.name }}</h1>
+    <div class="bs-component">
+        <img src="{{ vich_uploader_asset(game, 'imageFile') }}" style="height: 200px; width: 100%; display: block;">
+        <p>Date de sortie: {{ game.releaseDate|date('Y') }}</p>
+        <p>Resumé du jeu: {{ game.synopsis }}</p>
+        <p>Règle du jeu: {{ game.rules }}</p>
+        <p>Nombre de joueur: {{ game.playerNumber }}</p>
+    </div>
+    <div class="bs-component">
+        {% if app.user %}
+            {% if game.name in app.user.games %}
+                <button type="button" class="btn btn-danger">
+                    <a href="{{ path('remove_fav_game', { 'id': game.id}) }}">Supprimer des favoris</a>
+                </button>
+            {% else %}
+                <button type="button" class="btn btn-info">
+                    <a href="{{ path('add_fav_game', { 'id': game.id}) }}">Ajouter aux favoris</a>
+                </button>
+            {% endif %}
+        {% else %}
+            <button type="button" class="btn btn-info">
+                <a href="{{ path('profile', {'page': 'profile'}) }}">Ajouter aux favoris</a>
+            </button>
+        {% endif %}
+    </div>
+{% endblock %}
